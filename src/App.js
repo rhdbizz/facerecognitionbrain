@@ -41,9 +41,8 @@ class App extends Component {
   calculatedFaceLocation = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
-    const height = Number(image.height);
     const width = Number(image.width);
-    // console.log(height, width);
+    const height = Number(image.height);
     return {
       leftCol: clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
@@ -86,7 +85,7 @@ class App extends Component {
           onInputChange = {this.onInputChange}
           onSubmitButton = {this.onSubmitButton}
         />
-        <FaceRecognition imgUrl = {this.state.imgUrl} />
+        <FaceRecognition box={this.state.box} imgUrl = {this.state.imgUrl} />
       </div>
     );
   }
